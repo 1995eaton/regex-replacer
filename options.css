@@ -1,0 +1,100 @@
+body {
+  background-image: url('background.png');
+}
+
+#header {
+  position: fixed;
+  width: 100%; left: 0;
+  background: -webkit-linear-gradient(top, #383838 0%,#474747 100%);
+  height: 50px; top: 0;
+  text-align: center;
+  box-shadow: 0 1px 30px 5px;
+}
+
+#header h1 {
+  margin-top: 5px;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#c3c3c3));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+#container_main {
+  position: absolute;
+  height: calc(100% - 135px);
+  top: 50px;
+  text-align: center;
+  width: 100%;
+  left: 0;
+  margin-top: 20px;
+}
+
+#replacements {
+  width: 800px;
+  padding: 25px;
+  height: 100%;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-color: #555;
+}
+
+#replacements_text {
+  padding: 10px;
+}
+
+#save_button {
+  bottom: 5px;
+  margin-top: 5px;
+  height: 45px;
+  width: 180px;
+  font-size: 14pt;
+}
+
+#help {
+  position: absolute;
+  left: 0; right: 0;
+  width: 780px;
+  text-align: right;
+  margin: 5px auto;
+  height: 20px;
+}
+#help_container {
+  position: fixed;
+  overflow: auto;
+  width: 100%; left: 0;
+  height: 100%; top: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  /*display: none;*/
+}
+#help_box {
+  height: calc(100% - 200px);
+  width: calc(100% - 200px);
+  min-width: 500px;
+  min-height: 800px;
+  margin: 100px;
+  background-color: #ddd;
+  border-radius: 5px;
+  /*display: none;*/
+}
+
+#help_box p, #help_box h1 {
+  margin-top: -30px;
+  font-size: 28pt;
+  text-align: center;
+}
+
+#help_box p {
+  font-size: 14pt;
+  padding-top: 10px;
+}
+
+#help_box_closebutton {
+  width: 25px; height: 25px;
+  opacity: 0.5;
+  border-radius: 500px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.example {
+  color: #777;
+}

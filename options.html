@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Regex Replace Options</title>
+<link rel="stylesheet" href="options.css">
+</head>
+<style>
+</style>
+<body>
+<div id="header">
+  <h1>Regex Replace</h1>
+</div>
+<div id="container_main">
+  <div id="help"><a href="#">Help</a></div>
+  <textarea id="replacements">
+  </textarea>
+  <br />
+  <button id="save_button">Save Changes</button>
+</div>
+<div id="help_container">
+  <div id="help_box">
+    <div id="help_box_closebutton">
+      <img src="x.png">
+    </div>
+      <h1>Regex Replace Help</h1>
+      <p>
+      <br/>Arguments are separated by newlines, and search/replace terms are separated by three pipe symbols.<br/>
+      For example: '<span class="example">apple ||| orange</span>' would replace "I like to eat apples." with "I like to eat oranges."<br/>
+      More complex Regex substitutions are also possible: '<span class="example">quick brown(.*)lazy dog ||| lazy brown\1quick dog</span>' would replace 'The quick brown fox jumped over the lazy dog.'<br /> with "The lazy fox jumped over the quick brown dog." and '<span class="example">[0-9]+ ||| 0</span>' would replace any digit (or string of continuing digits) with 0. The source for this extension can be found on my <a href="https://github.com/1995eaton/regex-replacer">GitHub</a>.
+      </p>
+  </div>
+</div>
+</body>
+
+<script src="jquery.js"></script>
+<script src="background.js"></script>
+
+</html>
