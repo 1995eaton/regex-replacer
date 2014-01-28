@@ -63,7 +63,7 @@ body {
   width: 100%; left: 0;
   height: 100%; top: 0;
   background-color: rgba(0, 0, 0, 0.8);
-  /*display: none;*/
+  display: none;
 }
 #help_box {
   height: calc(100% - 200px);
@@ -73,7 +73,7 @@ body {
   margin: 100px;
   background-color: #ddd;
   border-radius: 5px;
-  /*display: none;*/
+  display: none;
 }
 
 #help_box p, #help_box h1 {
