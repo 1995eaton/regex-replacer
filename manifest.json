@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Regex Replace",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Custom regex page replacements for Google Chrome. Like the Cloud To Butt extension, but with any strings you want!",
   "background": {
     "scripts": [

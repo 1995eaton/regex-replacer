@@ -1,4 +1,7 @@
 chrome.runtime.sendMessage({method: "getSubstitutions"}, function(response) {
+  if (!response.status) {
+    return;
+  }
   var replacements = response.status.split("\n");
 
   if (replacements.length == 0) { return; }
