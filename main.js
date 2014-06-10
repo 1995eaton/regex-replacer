@@ -1,26 +1,30 @@
-chrome.runtime.sendMessage({method: "getSubstitutions"}, function(response) {
-  if (!response.status) {
-    return;
-  }
-  var replacements = response.status.split("\n");
-
-  if (replacements.length == 0) { return; }
-  for (var i = 0; i < replacements.length; i++) {
-    replacements[i] = replacements[i].split(/(?:(?: )+|)\|\|\|(?:(?: )+|)/);
-  }
-  var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
-  var node;
-
-  while(node = walker.nextNode()) {
-    for (var i = 0; i < replacements.length; i++) {
-      var nodeData = node.data;
-      var search = replacements[i][0];
-      var substitution = replacements[i][1];
-      if (!node.nodeValue || node.parentElement.tagName.toLowerCase() == 'script' || !search || !substitution) { continue ; }
-      var r = node.data.replace(new RegExp(search, "g"), substitution);
-      if (r != node.data) {
-        node.nodeValue = r;
+document.addEventListener("DOMContentLoaded", function() {
+  chrome.runtime.sendMessage({method: "getSubstitutions"}, function(response) {
+    var replacements, replacement, repLen, nodeName, iterator, node;
+    if (!document || !document.body || !response || response.length === 0) {
+      return;
+    }
+    replacements = response.split(/\n+/)
+        .filter(function(e) { return e; })
+        .map(function(e) { return e.split(/ *\|{3} */); });
+    repLen = replacements.length;
+    iterator = document.createNodeIterator(document.body, NodeFilter.SHOW_TEXT, function(node) {
+      if (!node.parentNode) {
+        return NodeFilter.FILTER_REJECT;
+      }
+      nodeName = node.parentNode.localName.toLowerCase();
+      if (nodeName === "script" || nodeName === "style" || nodeName === "noscript" || !node.data) {
+        return NodeFilter.FILTER_REJECT;
+      }
+      return NodeFilter.FILTER_ACCEPT;
+    }, false);
+    while (node = iterator.nextNode()) {
+      for (var i = 0; i < repLen; i++) {
+        replacement = node.data.replace(new RegExp(replacements[i][0], "g"), replacements[i][1]);
+        if (replacement !== node.data) {
+          node.data = replacement;
+        }
       }
     }
-  }
+  });
 });
